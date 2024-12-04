@@ -1,0 +1,66 @@
+<div class="container">
+  <h1>Gerenciamento de Rotas</h1>
+  <hr />
+  <h2>Formulário de cadastro</h2>
+  <form (ngSubmit)="salvarRota()">
+    <div>
+      <label>Origem:</label>
+      <input type="text" [(ngModel)]="rotaAtual.origem" name="origem" required />
+    </div>
+    <div>
+      <label>Destino:</label>
+      <input type="text" [(ngModel)]="rotaAtual.destino" name="destino" required />
+    </div>
+    <div>
+      <label>Valor:</label>
+      <input type="number" [(ngModel)]="rotaAtual.valor" name="valor" required />
+    </div>
+    <button type="submit">{{ rotaAtual.id ? 'Alterar' : 'Incluir' }}</button>
+  </form>
+
+  <hr />
+
+  <h2>Rotas Cadastradas</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Origem</th>
+        <th>Destino</th>
+        <th>Custo</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rota of rotas">
+        <td>{{ rota.origem }}</td>
+        <td>{{ rota.destino }}</td>
+        <td>{{ rota.valor }}</td>
+        <td>
+          <button (click)="editarRota(rota)">Editar</button>
+          <button (click)="excluirRota(rota.id!)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr />
+
+  <h2>Consultar Melhor Rota</h2>
+  <form (ngSubmit)="consultarMelhorRota()">
+    <div>
+      <label>Origem:</label>
+      <input type="text" [(ngModel)]="origemConsulta" name="origemConsulta" required />
+    </div>
+    <div>
+      <label>Destino:</label>
+      <input type="text" [(ngModel)]="destinoConsulta" name="destinoConsulta" required />
+    </div>
+    <button type="submit">Consultar</button>
+  </form>
+
+  <div>
+    <h3>Melhor(es) Rota(s):</h3>
+   <p>Rotas: {{ melhoresRotas?.rota }}</p>
+   <p>Valor: {{ melhoresRotas?.valor?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}</p>
+  </div>
+</div>

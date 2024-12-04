@@ -1,0 +1,21 @@
+label, input {
+  padding-right: 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px;
+  margin-right: 5px;
+  background-color: #126ef8;
+  border-radius: 5px;
+  border: none;
+  color:#f0ffff;
+  font-size: 14px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
